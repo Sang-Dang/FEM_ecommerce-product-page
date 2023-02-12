@@ -6,6 +6,7 @@ body {
   padding: 30px 9vw;
   font-family: "Kumbh Sans";
   position: relative;
+  overflow-x: hidden;
 }
 @media (max-width: 1000px) {
   body {
@@ -77,6 +78,12 @@ body > header section.functions .shopping-cart svg:active {
 }
 body > header section.functions .user {
   width: 40px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: all 0.2s linear;
+}
+body > header section.functions .user:hover {
+  border-color: hsl(26deg, 100%, 55%);
 }
 body > header section.cart {
   position: absolute;
@@ -208,10 +215,10 @@ body > main section#main-image .slide-wrapper .slide-arrow {
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
-body > main section#main-image .slide-wrapper .slide-arrow#slide-arrow-next {
+body > main section#main-image .slide-wrapper .slide-arrow.slide-arrow-next {
   right: 0;
 }
-body > main section#main-image .slide-wrapper .slide-arrow#slide-arrow-prev {
+body > main section#main-image .slide-wrapper .slide-arrow.slide-arrow-prev {
   left: 0;
 }
 body > main section#main-image .slide-wrapper .slide-arrow:active {
@@ -368,10 +375,30 @@ body > main section.main-text .add-to-cart:active {
   body > main section#main-image .slide-wrapper .current-slide {
     display: block;
     width: 30vw;
+    position: relative;
   }
   body > main section#main-image .slide-wrapper .current-slide img {
     border-radius: 10px;
     transition: opacity 0.3s ease-in-out;
+  }
+  body > main section#main-image .slide-wrapper .current-slide::after {
+    content: "";
+    background-image: url(../images/icon-view.svg);
+    background-color: rgba(0, 0, 0, 0.44);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 25%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    opacity: 0;
+    transition: all 0.1s linear;
+  }
+  body > main section#main-image .slide-wrapper .current-slide:hover::after {
+    opacity: 1;
   }
   body > main section#main-image .slide-wrapper .slide-container {
     display: flex;
@@ -382,6 +409,7 @@ body > main section.main-text .add-to-cart:active {
     height: 7vw;
     max-height: 102px;
     overflow-x: auto;
+    list-style: none;
   }
   body > main section#main-image .slide-wrapper .slide-container * {
     all: unset;
@@ -406,8 +434,8 @@ body > main section.main-text .add-to-cart:active {
   }
   body > main section.main-text {
     margin: 0;
-    margin-top: clamp(0px, 2vw, 50px);
-    padding: clamp(0px, 2.5vw, 25px);
+    margin-top: clamp(0px, 0.5vw, 50px);
+    padding: clamp(0px, 1.5vw, 25px);
   }
   body > main section.main-text .product-name {
     font-size: 2.5rem;
@@ -438,4 +466,157 @@ body > main section.main-text .add-to-cart:active {
   body > main section.main-text .functions .add-to-cart {
     margin: 0;
   }
+}
+
+#main-lightbox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.685);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+#main-lightbox.active {
+  visibility: visible;
+  opacity: 1;
+}
+@media (max-width: 1000px) {
+  #main-lightbox {
+    display: none;
+  }
+}
+
+#main-lightbox .slide-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+#main-lightbox .slide-wrapper #close-lightbox {
+  content: "";
+  background-image: url("../images/icon-close.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: -5%;
+  right: 0;
+  z-index: 500;
+  color: white;
+  transition: all 0.2s linear;
+}
+#main-lightbox .slide-wrapper #close-lightbox:hover {
+  transform: rotate(360deg);
+}
+#main-lightbox .slide-wrapper #close-lightbox:active {
+  transform: scale(90%);
+}
+#main-lightbox .slide-wrapper .slide-arrow {
+  position: absolute;
+  top: 40%;
+  transform: translateY(0);
+  height: 45px;
+  width: 45px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  z-index: 10;
+}
+#main-lightbox .slide-wrapper .slide-arrow.slide-arrow-next {
+  right: 0;
+  transform: translateX(50%);
+}
+#main-lightbox .slide-wrapper .slide-arrow.slide-arrow-prev {
+  left: 0;
+  transform: translateX(-50%);
+}
+#main-lightbox .slide-wrapper .slide-arrow svg:hover {
+  stroke: hsl(26deg, 100%, 55%);
+}
+#main-lightbox .slide-wrapper .current-slide {
+  display: block;
+  width: 33vw;
+  position: relative;
+}
+#main-lightbox .slide-wrapper .current-slide img {
+  border-radius: 10px;
+  transition: opacity 0.3s ease-in-out;
+}
+#main-lightbox .slide-wrapper .slide-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-flow: nowrap;
+  gap: 1rem;
+  width: 30vw;
+  height: 4vw;
+  max-height: 102px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0;
+  list-style: none;
+}
+#main-lightbox .slide-wrapper .slide-container * {
+  all: unset;
+}
+#main-lightbox .slide-wrapper .slide-container .slide {
+  all: unset;
+  transition: opacity 0.2s ease-in-out, transform 0.2s linear;
+  position: relative;
+}
+#main-lightbox .slide-wrapper .slide-container .slide img {
+  width: 4vw;
+  max-width: 102px;
+  border-radius: 10px;
+}
+#main-lightbox .slide-wrapper .slide-container .slide::before {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+#main-lightbox .slide-wrapper .slide-container .slide:hover::before {
+  visibility: visible;
+  opacity: 1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.3490196078);
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+#main-lightbox .slide-wrapper .slide-container .slide.active::before {
+  visibility: visible;
+  opacity: 1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.568627451);
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+#main-lightbox .slide-wrapper .slide-container .slide:active {
+  transform: scale(95%);
+}
+
+#template {
+  display: none;
 }/*# sourceMappingURL=style.css.map */
