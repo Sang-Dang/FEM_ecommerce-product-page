@@ -683,11 +683,13 @@ body > main {
       all: unset;
       transition: opacity 0.2s ease-in-out, transform 0.2s linear;
       position: relative;
+      border-radius: 10px;
 
       img {
         width: 4vw;
         max-width: 102px;
         border-radius: 10px;
+
       }
 
       &::before {

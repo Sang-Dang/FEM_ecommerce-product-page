@@ -576,6 +576,7 @@ body > main section.main-text .add-to-cart:active {
   all: unset;
   transition: opacity 0.2s ease-in-out, transform 0.2s linear;
   position: relative;
+  border-radius: 10px;
 }
 #main-lightbox .slide-wrapper .slide-container .slide img {
   width: 4vw;
