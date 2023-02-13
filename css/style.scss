@@ -476,10 +476,6 @@ body > main {
         }
 
         .slide-container {
-          * {
-            // this is too complicated so imma just rewrite it. stop yelling at me
-            all: unset;
-          }
 
           display: flex;
           justify-content: flex-start;
@@ -488,9 +484,7 @@ body > main {
           width: 30vw;
           height: 7vw;
           max-height: 102px;
-          overflow-x: auto;
-          // scrollbar-width: auto;
-          // -ms-overflow-style: auto;
+          overflow-x:auto;
           list-style: none;
 
           .slide {
@@ -500,7 +494,7 @@ body > main {
             img {
               width: 7vw;
               max-width: 102px;
-              border-radius: 10px;
+              border-radius: 10px !important;
             }
 
             &:hover {
@@ -659,10 +653,7 @@ body > main {
   }
 
   .slide-container {
-    * {
-      // this is too complicated so imma just rewrite it. stop yelling at me
-      all: unset;
-    }
+
 
     margin: 0 auto;
     display: flex;

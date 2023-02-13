@@ -411,9 +411,6 @@ body > main section.main-text .add-to-cart:active {
     overflow-x: auto;
     list-style: none;
   }
-  body > main section#main-image .slide-wrapper .slide-container * {
-    all: unset;
-  }
   body > main section#main-image .slide-wrapper .slide-container .slide {
     all: unset;
     transition: opacity 0.2s ease-in-out, transform 0.2s linear;
@@ -421,7 +418,7 @@ body > main section.main-text .add-to-cart:active {
   body > main section#main-image .slide-wrapper .slide-container .slide img {
     width: 7vw;
     max-width: 102px;
-    border-radius: 10px;
+    border-radius: 10px !important;
   }
   body > main section#main-image .slide-wrapper .slide-container .slide:hover {
     opacity: 0.5;
@@ -568,9 +565,6 @@ body > main section.main-text .add-to-cart:active {
   overflow-y: hidden;
   padding: 0;
   list-style: none;
-}
-#main-lightbox .slide-wrapper .slide-container * {
-  all: unset;
 }
 #main-lightbox .slide-wrapper .slide-container .slide {
   all: unset;
