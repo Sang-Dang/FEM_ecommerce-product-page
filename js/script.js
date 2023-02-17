@@ -1,6 +1,16 @@
+// Open cart
+$("#header .shopping-cart").click(function () {
+    $("section.cart").toggleClass("active");
+})
+
 // Toggle main navigation on Mobile screen.
-$("body>header>nav>.toggle").click(function () {
+$("#header .toggle").click(function () {
     $("body>header>nav").toggleClass("active");
+})
+
+// toggle user-dropdown
+$("#header .user").click(function () {
+    $(".user-dropdown").toggleClass("active");
 })
 
 // Main Carousel buttons Mobile
@@ -32,10 +42,6 @@ nextBtn.addEventListener("click", () => {
     }
 });
 
-// Open cart
-$(".shopping-cart").click(function () {
-    $("section.cart").toggleClass("active");
-})
 
 // desktop slide switch
 
@@ -60,6 +66,8 @@ document.querySelectorAll(".slide").forEach(slide => {
 
 // amount functionality
 const amountInput = $(".select-amount")[0];
+
+//add amount
 $(".add-amount").click(function () {
     if (amountInput.value == "") {
         amountInput.value = "0";
@@ -67,7 +75,7 @@ $(".add-amount").click(function () {
     amountInput.value = parseInt(amountInput.value) + 1;
 })
 
-
+//minus amount
 $(".minus-amount").click(function () {
     if (amountInput.value != 0) {
         if (amountInput.value == "") {
@@ -77,12 +85,14 @@ $(".minus-amount").click(function () {
     }
 })
 
+//input only number
 amountInput.addEventListener('input', () => {
     if (isNaN(amountInput.value[amountInput.value.length - 1])) {
         amountInput.value = amountInput.value.slice(0, -1);
     }
 })
 
+//if input is empty set it to 0
 amountInput.addEventListener('blur', () => {
     if (amountInput.value.length == 0) {
         amountInput.value = "0";
@@ -92,12 +102,12 @@ amountInput.addEventListener('blur', () => {
 // Lightbox functionality
 
 function toggleLightbox() {
-    if (window.matchMedia("(min-width: 1000px)")) {
-        $(window).scrollTop(0);
+    if (window.matchMedia("(min-width: 1000px)").matches) {
         if ($("#main-lightbox").hasClass("active")) {
             $("#main-lightbox").empty();
             $("#main-lightbox").removeClass("active");
         } else {
+            $(window).scrollTop(0);
             $(".slide-wrapper:first").clone().appendTo("#main-lightbox");
             $("#main-lightbox").addClass("active");
             $("#close-lightbox").clone().appendTo("#main-lightbox > .slide-wrapper");

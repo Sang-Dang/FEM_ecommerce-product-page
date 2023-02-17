@@ -81,9 +81,67 @@ body > header section.functions .user {
   border: 2px solid transparent;
   border-radius: 50%;
   transition: all 0.2s linear;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 body > header section.functions .user:hover {
   border-color: hsl(26deg, 100%, 55%);
+}
+body > header section.functions .user .user-dropdown {
+  position: absolute;
+  top: 180%;
+  right: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.251);
+  width: -moz-max-content;
+  width: max-content;
+  min-width: 200px;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+body > header section.functions .user .user-dropdown .greeting {
+  padding-bottom: 10px;
+  border-bottom: 1px solid hsl(220deg, 14%, 75%);
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+body > header section.functions .user .user-dropdown .dropdown-items {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+body > header section.functions .user .user-dropdown .dropdown-items li a {
+  color: #000;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+body > header section.functions .user .user-dropdown .dropdown-items li a i {
+  transition: transform 0.5s ease-in-out;
+}
+body > header section.functions .user .user-dropdown .dropdown-items li a:hover {
+  color: hsl(26deg, 100%, 55%);
+  font-weight: 900;
+}
+body > header section.functions .user .user-dropdown .dropdown-items li a:hover i {
+  transform: rotate(720deg);
+}
+body > header section.functions .user .user-dropdown .dropdown-items li a:active {
+  transform: scale(90%);
+}
+body > header section.functions .user .user-dropdown.active {
+  padding: 18px;
+  height: 180px;
+  overflow: visible;
 }
 body > header section.cart {
   position: absolute;

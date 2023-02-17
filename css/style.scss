@@ -104,9 +104,73 @@ body > header {
       border: 2px solid transparent;
       border-radius: 50%;
       transition: all 0.2s linear;
+      position: relative;
+      user-select: none;
 
       &:hover {
         border-color: $p_orange;
+      }
+
+      .user-dropdown {
+        position: absolute;
+        top: 180%;
+        right: 0;
+        background-color: $n_white;
+        border-radius: 10px;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.251);
+        width: max-content;
+        min-width: 200px;
+        height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+
+        .greeting {
+          padding-bottom: 10px;
+          border-bottom: 1px solid $n_grayist-blue;
+          font-size: 1.3rem;
+          font-weight: 900;
+        }
+
+        .dropdown-items {
+          margin-top: 10px;
+          list-style: none;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          li a {
+            color: $n_black;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+            i {
+              transition: transform 0.5s ease-in-out;
+            }
+
+            &:hover {
+              color: $p_orange;
+              font-weight: 900;
+
+              i {
+                transform: rotate(720deg);
+              }
+            }
+
+            &:active {
+              transform: scale(90%);
+            }
+          }
+        }
+
+        &.active {
+          padding: 18px;
+          height: 180px;
+          overflow: visible;
+        }
       }
     }
   }
@@ -476,7 +540,6 @@ body > main {
         }
 
         .slide-container {
-
           display: flex;
           justify-content: flex-start;
           flex-flow: nowrap;
@@ -484,7 +547,7 @@ body > main {
           width: 30vw;
           height: 7vw;
           max-height: 102px;
-          overflow-x:auto;
+          overflow-x: auto;
           list-style: none;
 
           .slide {
@@ -563,7 +626,7 @@ body > main {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100; 
+  z-index: 100;
   background-color: rgba(0, 0, 0, 0.685);
   visibility: hidden;
   opacity: 0;
@@ -591,10 +654,10 @@ body > main {
   justify-content: center;
 
   #close-lightbox {
-    content: '';
+    content: "";
     background-image: url("../images/icon-close.svg");
     background-repeat: no-repeat;
-    background-size:contain;
+    background-size: contain;
     width: 15px;
     height: 15px;
     position: absolute;
@@ -653,8 +716,6 @@ body > main {
   }
 
   .slide-container {
-
-
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -680,19 +741,18 @@ body > main {
         width: 4vw;
         max-width: 102px;
         border-radius: 10px;
-
       }
 
       &::before {
         visibility: hidden;
         opacity: 0;
         transition: all 0.2s linear;
-      } 
+      }
 
       &:hover::before {
         visibility: visible;
         opacity: 1;
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -706,7 +766,7 @@ body > main {
       &.active::before {
         visibility: visible;
         opacity: 1;
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
